@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation | The Saffron House</title>
+
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+  <img src="images/logo.jpg" class="logo" alt="The Saffron House Logo">
+  <img src="images/banner.jpg" class="banner" alt="The Saffron House Banner">
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a class="active" href="reservation.html">Reservation</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="t-alignment">
+  <h2>Book Your Experience</h2>
+  <p> Book your table ahead to enjoy a seamless dining experience at The Saffron House. 
+    Savor our authentic South Asian cuisine in a welcoming atmosphere, perfect for family gatherings, celebrations, or a cozy meal</p>
+  <form class="reservation-form" id="resForm" action="#" method="post">
+
+  <div class="form-group">
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" required pattern="^[A-Za-z]+$" placeholder="John">
+  </div>
+
+  <div class="form-group">
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" required pattern="^[A-Za-z]+$" placeholder="Doe">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$" placeholder="425-746-2827">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+  </div>
+
+  <div class="form-group">
+    <label for="date">Reservation Date:</label>
+    <input type="date" id="date" name="date" required>
+  </div>
+
+  <div class="form-group">
+    <label for="time">Reservation Time:</label>
+    <input type="time" id="time" name="time" required>
+  </div>
+
+  <div class="form-group">
+    <label for="guests">Number of Guests:</label>
+    <select id="guests" name="guests" required>
+      <option value="">Select</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6+</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="notes">Special Requests:</label>
+    <textarea id="notes" name="notes" rows="4" placeholder="Allergies, celebrations, preferences..."></textarea>
+  </div>
+
+  <button type="submit">Submit Reservation</button>
+</form>
+
+</main>
+
+<footer class="t-alignment" >
+  <p>© The Saffron House 2025 | All Rights Reserved</p>
+  <div class="social-icons">
+    <p>Conect with us on our Social Media page</p>
+    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  </div>
+</footer>
+
+<script>
+
+// PREVENT PAST DATE
+
+const dateInput = document.getElementById("date");
+let today = new Date().toISOString().split("T")[0];
+dateInput.min = today;
+
+// VALIDATE TIME BETWEEN 8:00 AM – 10:30 PM
+
+document.getElementById("resForm").addEventListener("submit", function(e) {
+  let time = document.getElementById("time").value;
+
+  if (time < "08:00" || time > "22:30") {
+    alert("Reservation time must be between 8:00 AM and 10:30 PM.");
+    e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>

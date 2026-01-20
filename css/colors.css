@@ -1,0 +1,54 @@
+:root {
+  --saffron: #b75e2d;      /* Main accent color used everywhere */
+  --maroon: #9a4a20;       /* Hover & darker accent */
+  --cream: #fff8f0;        /* Background of sections + cards */
+  --gold-light: #f6e4c1;   /* Navigation & footer background */
+  --brown: #333;           /* Text color */
+}
+
+/* Global */
+body {
+  background: var(--cream);
+  color: var(--brown);
+}
+
+/* Header & Footer */
+header, footer {
+  background: var(--gold-light);
+  color: var(--maroon);
+}
+
+/* Navigation */
+nav ul {
+  background: var(--gold-light);
+}
+
+nav ul li a {
+  color: var(--saffron);
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: var(--maroon);
+}
+
+/* Accent Boxes (About, Story, Feedback, Reservation) */
+.about-box,
+.story-box,
+.contact-form,
+.reservation-form {
+  background: var(--cream);
+  border-left: 5px solid var(--saffron);
+  color: var(--brown);
+}
+
+/* Buttons */
+button {
+  background: var(--saffron);
+  color: white;
+}
+
+button:hover {
+  background: var(--maroon);
+}
+
