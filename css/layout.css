@@ -397,3 +397,28 @@ footer {
 .hidden {
   visibility: hidden;
 }
+
+/* greeting message */
+#greeting {
+  position: fixed;
+  top: 450px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff8f0;              
+  border-left: 5px solid #b75e2d;   
+  padding: 20px 30px;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  font-size: 20px;
+  color: #b75e2d;
+  text-align: center;
+  z-index: 1000;
+  line-height: 1.7;
+}
+
+
+#greeting:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}

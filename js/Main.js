@@ -8,7 +8,30 @@ if (navToggle) {
   });
 }
 
-// Update Footer Year
+// Greeting Message
+const greetingElement = document.getElementById("greeting");
+
+if (greetingElement) {
+  const hour = new Date().getHours();
+  let greetingText;
+
+  if (hour < 12) {
+    greetingText = "Good Morning! Welcome to The Saffron House 🌞";
+  } else if (hour < 18) {
+    greetingText = "Good Afternoon! Welcome to The Saffron House 🍽️";
+  } else {
+    greetingText = "Good Evening! Welcome to The Saffron House";
+  }
+
+  greetingElement.textContent = greetingText;
+  greetingElement.style.display = "block";
+
+  // Hide greeting after 4 seconds (4000 ms)
+  setTimeout(() => {
+    greetingElement.style.display = "none";
+  }, 4000);
+}
+
 
 const descriptions = {
   // Breads & Desserts
