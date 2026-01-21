@@ -106,3 +106,46 @@ function closeModal() {
     document.getElementById("itemModal").style.display = "none";
 }
 
+// Offer Expiring
+
+const offerPopup = document.getElementById("offer-popup");
+const offerText = document.getElementById("offer-text");
+
+// Set offer expiry date (YYYY, MM-1, DD, HH, MM)
+const offerExpiry = new Date(2026, 0, 31, 23, 59);
+
+if (offerPopup && offerText) {
+
+  // Update offer text
+  const updateOfferText = function () {
+    const now = new Date();
+    const timeLeft = offerExpiry - now;
+
+    if (timeLeft <= 0) {
+      offerPopup.style.display = "none";
+      return;
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+
+    offerText.textContent =
+      `Get 26% OFF on all Main Courses! ⏳ Offer Expires in ${days} day(s) and ${hours} hour(s).`;
+  };
+
+  updateOfferText();                 // initial update
+  setInterval(updateOfferText, 60000); // update every minute
+
+  // Blinking effect using function expression
+  const blinkLoop = function () {
+    if (offerPopup.style.display === "none") return;
+
+    offerPopup.style.visibility = "visible";
+    setTimeout(() => {
+      offerPopup.style.visibility = "hidden";
+      setTimeout(blinkLoop, 1000); // hidden for 1s, then loop
+    }, 3000); // visible for 3s
+  };
+
+  blinkLoop(); // start blinking
+}

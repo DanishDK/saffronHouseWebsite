@@ -422,3 +422,29 @@ footer {
   transform: translateX(-50%) translateY(-3px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.3);
 }
+
+/* ---- OFFER EXPIRE BOX ---- */
+#offer-popup {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: #fff8f0;
+  border-left: 5px solid #b75e2d;
+  padding: 20px 30px;
+  max-width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  display: block;  /* display always block, blinking handled by visibility */
+  visibility: visible;
+  z-index: 1000;
+}
+
+#offer-popup h3 {
+  color: #b75e2d;
+  margin-bottom: 10px;
+}
+
+#offer-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
