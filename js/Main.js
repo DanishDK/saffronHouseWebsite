@@ -32,6 +32,41 @@ if (greetingElement) {
   }, 4000);
 }
 
+// WEEKEND SPECIALS (Decision + Loop)
+const weekendSection = document.getElementById("weekend-specials");
+const specialList = document.getElementById("special-list");
+
+// 0 = Sunday, 6 = Saturday
+const today = new Date().getDay();
+
+// Weekend dishes
+const weekendDishes = [
+  "Hyderabadi Chicken Biryani",
+  "Lamb Karahi Special",
+  "Butter Chicken Deluxe",
+  "Paneer Handi"
+];
+
+if (weekendSection && specialList) {
+
+  // DECISION: check if weekend
+  if (today === 0 || today === 6) {
+    weekendSection.style.display = "block";
+
+    let output = "";
+
+    // LOOP: display dishes
+    for (let i = 0; i < weekendDishes.length; i++) {
+      output += "🍽️ " + weekendDishes[i] + "<br>";
+    }
+
+    specialList.innerHTML = output;
+
+  } else {
+    weekendSection.style.display = "none";
+  }
+}
+
 
 const descriptions = {
   // Breads & Desserts
@@ -149,56 +184,6 @@ if (offerPopup && offerText) {
 
   blinkLoop(); // start blinking
 }
-
-// RESTAURANT OPEN / CLOSED STATUS
-const statusElement = document.getElementById("open-status");
-
-// Define hours (change these to your real hours)
-const openHour = 11;  // 11:00 AM
-const closeHour = 22; // 10:00 PM (24-hour format)
-
-function updateOpenStatus() {
-  const now = new Date();
-  const currentHour = now.getHours();
-  const currentMinute = now.getMinutes();
-
-  let statusText = "";
-  let statusClass = "";
-
-  // Check if current time is within open hours
-  if 
-    ( currentHour > openHour && currentHour < closeHour )
-  {
-    statusText = "We are OPEN! 🍽️";
-    statusClass = "open";
-  } 
-  else if 
-        ( currentHour === openHour && currentMinute >= 0 ) 
-  {
-    statusText = "We are OPEN! 🍽️";
-    statusClass = "open";
-  } 
-  else if 
-        ( currentHour === closeHour && currentMinute === 0 ) 
-  {
-    statusText = "We are OPEN! 🍽️";
-    statusClass = "open";
-  } 
-  else {
-    statusText = "Sorry, we are CLOSED ⏰";
-    statusClass = "closed";
-  }
-
-  statusElement.textContent = statusText;
-  statusElement.className = statusClass;
-}
-
-// Run it once right away
-updateOpenStatus();
-
-// Then update every minute
-setInterval(updateOpenStatus, 60000);
-
 
 // RESTAURANT OPEN / CLOSED STATUS
 const statusElement = document.getElementById("open-status");
