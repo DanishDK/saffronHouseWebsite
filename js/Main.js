@@ -112,7 +112,7 @@ const offerPopup = document.getElementById("offer-popup");
 const offerText = document.getElementById("offer-text");
 
 // Set offer expiry date (YYYY, MM-1, DD, HH, MM)
-const offerExpiry = new Date(2026, 0, 31, 23, 59);
+const offerExpiry = new Date(2026, 5, 31, 23, 59);
 
 if (offerPopup && offerText) {
 
@@ -149,3 +149,104 @@ if (offerPopup && offerText) {
 
   blinkLoop(); // start blinking
 }
+
+// RESTAURANT OPEN / CLOSED STATUS
+const statusElement = document.getElementById("open-status");
+
+// Define hours (change these to your real hours)
+const openHour = 11;  // 11:00 AM
+const closeHour = 22; // 10:00 PM (24-hour format)
+
+function updateOpenStatus() {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+
+  let statusText = "";
+  let statusClass = "";
+
+  // Check if current time is within open hours
+  if 
+    ( currentHour > openHour && currentHour < closeHour )
+  {
+    statusText = "We are OPEN! 🍽️";
+    statusClass = "open";
+  } 
+  else if 
+        ( currentHour === openHour && currentMinute >= 0 ) 
+  {
+    statusText = "We are OPEN! 🍽️";
+    statusClass = "open";
+  } 
+  else if 
+        ( currentHour === closeHour && currentMinute === 0 ) 
+  {
+    statusText = "We are OPEN! 🍽️";
+    statusClass = "open";
+  } 
+  else {
+    statusText = "Sorry, we are CLOSED ⏰";
+    statusClass = "closed";
+  }
+
+  statusElement.textContent = statusText;
+  statusElement.className = statusClass;
+}
+
+// Run it once right away
+updateOpenStatus();
+
+// Then update every minute
+setInterval(updateOpenStatus, 60000);
+
+
+// RESTAURANT OPEN / CLOSED STATUS
+const statusElement = document.getElementById("open-status");
+
+// Define hours (change these to your real hours)
+const openHour = 11;  // 11:00 AM
+const closeHour = 22; // 10:00 PM (24-hour format)
+
+function updateOpenStatus() {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+
+  let statusText = "";
+  let statusClass = "";
+
+  // Check if current time is within open hours
+  if 
+    ( currentHour > openHour && currentHour < closeHour )
+  {
+    statusText = "We are OPEN! 🍽️";
+    statusClass = "open";
+  } 
+  else if 
+        ( currentHour === openHour && currentMinute >= 0 ) 
+  {
+    statusText = "We are OPEN! 🍽️";
+    statusClass = "open";
+  } 
+  else if 
+        ( currentHour === closeHour && currentMinute === 0 ) 
+  {
+    statusText = "We are OPEN! 🍽️";
+    statusClass = "open";
+  } 
+  else {
+    statusText = "Sorry, we are CLOSED ⏰";
+    statusClass = "closed";
+  }
+
+  statusElement.textContent = statusText;
+  statusElement.className = statusClass;
+}
+
+// Run it once right away
+updateOpenStatus();
+
+// Then update every minute
+setInterval(updateOpenStatus, 60000);
+
+
