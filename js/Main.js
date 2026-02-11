@@ -1,3 +1,5 @@
+console.log("JS Loaded");
+
 // Mobile Nav Toggle
 const navToggle = document.getElementById('nav-toggle');
 const primaryNav = document.getElementById('primary-nav');
@@ -111,7 +113,14 @@ const descriptions = {
 };
 
 document.querySelectorAll(".menu-item").forEach(item => {
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (event) => {
+
+        // If Add to Cart button was clicked, STOP everything
+        if (event.target.classList.contains("addToCart")) {
+            event.stopPropagation();   
+            return;
+        }
+
         const title = item.dataset.name;
         const price = item.dataset.price;
         const img = item.dataset.img;
@@ -233,5 +242,35 @@ updateOpenStatus();
 
 // Then update every minute
 setInterval(updateOpenStatus, 60000);
+
+
+$(function () {
+
+  console.log("Cart Section Running");
+
+  var cart = [];
+
+  // Use delegated event binding in case menu items load dynamically
+  $(document).on('click', '.addToCart', function (e) {
+
+    e.stopPropagation(); // stop any parent click from interfering
+
+    console.log("Button clicked"); // should appear in console
+
+    var itemElement = $(this).closest('.menu-item');
+    var name = itemElement.data('name');
+    var price = parseFloat(itemElement.data('price').replace('$',''));
+
+    // Add to cart array
+    cart.push({ name: name, price: price });
+
+    // Update cart count
+    $('#cartCount').text(cart.length);
+
+    // Optional: show cart panel immediately
+    $('#cartPanel').addClass('active');
+  });
+
+});
 
 
