@@ -273,4 +273,23 @@ $(function () {
 
 });
 
+// Load menu items from JSON
+$(document).ready(function () {
+  $.getJSON('menu.json', function (menuItems) {
+    const menuGrid = $('.menu-grid'); // target where menu items go
+    menuGrid.empty(); // clear existing items if needed
+
+    menuItems.forEach(item => {
+      const menuItemHTML = `
+        <div class="menu-item" data-name="${item.name}" data-price="${item.price}" data-img="${item.img}">
+          <img src="${item.img}" alt="${item.name}">
+          <h3>${item.name}</h3>
+          <div class="price">${item.price}</div>
+          <button class="addToCart">Add to Cart</button>
+        </div>
+      `;
+      menuGrid.append(menuItemHTML);
+    });
+  });
+});
 

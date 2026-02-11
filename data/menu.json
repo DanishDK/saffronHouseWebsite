@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Samosa Plate",
+    "price": "$6.99",
+    "img": "images/samosa.jpg",
+    "description": "Golden, crispy samosas stuffed with spiced potatoes and peas, served with chutney."
+  },
+  {
+    "name": "Chicken Biryani",
+    "price": "$14.99",
+    "img": "images/m1.jpg",
+    "description": "Aromatic basmati rice layered with succulent chicken, herbs, and spices."
+  },
+  {
+    "name": "Butter Chicken",
+    "price": "$15.99",
+    "img": "images/m3.jpg",
+    "description": "Juicy chicken in a creamy tomato-butter sauce with Indian spices."
+  }
+]
