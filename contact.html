@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="css/colors.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/effects.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="js/Main.js"></script>
+
 
 </head>
 
@@ -54,6 +55,8 @@
     </p>
   </div>
   <div class="business-hours">
+    <h2>Find Us On Map</h2>
+<div id="map" style="width:100%; height:400px; margin-top:15px;"></div>
     <h2>Business Hours</h2>
     <p>Monday to Thursday: 11:00 AM - 10:00 PM</p>
     <p>Friday to Sunday: 8:00 AM - 11:00 PM</p>
@@ -88,7 +91,59 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  // Restaurant coordinates
+  var restaurantLocation = [47.8465, -122.2767];
+
+  // Initialize map
+  var map = L.map('map', { scrollWheelZoom: false }).setView(restaurantLocation, 15);
+
+  // Saffron-themed tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Custom restaurant icon
+  var restaurantIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/3075/3075977.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -35]
+  });
+
+  // Add marker with popup & "Get Directions" button
+  var marker = L.marker(restaurantLocation, { icon: restaurantIcon })
+    .addTo(map)
+    .bindPopup(`
+      <div style="text-align:center;">
+        <h3 style="margin:5px 0; color:#b76e00;">The Saffron House</h3>
+        <p style="margin:5px 0;">Authentic South Asian Cuisine</p>
+        <a 
+          href="https://www.google.com/maps/dir/?api=1&destination=2902+164th+St+SW+Bldg+F+Lynnwood+WA+98087" 
+          target="_blank"
+          style="
+            display:inline-block;
+            padding:8px 14px;
+            background:#d97706;
+            color:white;
+            border-radius:6px;
+            text-decoration:none;
+            font-weight:bold;
+            margin-top:5px;
+          ">
+          Get Directions
+        </a>
+      </div>
+    `)
+    .openPopup();
+
+  // Fade-in animation when page loads
+  window.addEventListener("load", function () {
+    document.getElementById("map").classList.add("show");
+  });
+</script>
 
 </body>
 </html>
