@@ -1,23 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | The Saffron House</title>
-  
-  <link rel="stylesheet" href="css/colors.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/effects.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | The Saffron House</title>
 
+<link rel="stylesheet" href="css/colors.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/effects.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+<style>
+  .swiper {
+    width: 90%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 20px auto;
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Share modal styling */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .share-icons a {
+    margin: 10px;
+    color: #333;
+    transition: color 0.2s;
+  }
+
+  .share-icons a:hover {
+    color: #007bff;
+  }
+
+  #shareBtn {
+    display: inline-block;
+    margin: 15px 0;
+    cursor: pointer;
+  }
+</style>
 </head>
-
 <body>
 
 <header>
   <img src="images/logo.jpg" class="logo" alt="The Saffron House Logo">
-<img src="images/banner.jpg" class="banner" alt="The Saffron House Banner">  
+  <img src="images/banner.jpg" class="banner" alt="The Saffron House Banner">  
 </header>
 
 <nav>
@@ -33,27 +94,99 @@
 <main class="t-alignment">
   <h2>The Saffron Gallery</h2>
 
-  <div class="gallery-grid">
-    <img src="images/sample1.jpg" alt="pic 1">
-    <img src="images/sample2.jpg" alt="pic 2">
-    <img src="images/sample3.jpg" alt="pic 3">
-    <img src="images/sample4.jpg" alt="pic 4">
+  <!-- Swiper Slider -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/sample1.jpg" alt="pic 1"></div>
+      <div class="swiper-slide"><img src="images/sample2.jpg" alt="pic 2"></div>
+      <div class="swiper-slide"><img src="images/sample3.jpg" alt="pic 3"></div>
+      <div class="swiper-slide"><img src="images/sample4.jpg" alt="pic 4"></div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Share Button -->
+  <div id="shareBtn">
+    <img src="images/shareIcon.jpg" width="90" height="90" alt="Share icon">
+    <p> Share</p>
+  </div>
+
+  <!-- Share Modal -->
+  <div id="shareModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Share this Gallery</h3>
+      <p>Click an icon to share:</p>
+      <input type="text" value="https://www.thesaffronhouse.com/gallery.html" readonly style="width:100%; text-align:center;">
+
+      <div class="share-icons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.thesaffronhouse.com/gallery.html" target="_blank">
+          <i class="fa-brands fa-facebook fa-2x"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://www.thesaffronhouse.com/gallery.html&text=Check%20out%20The%20Saffron%20House%20Gallery!" target="_blank">
+          <i class="fa-brands fa-twitter fa-2x"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+          <i class="fa-brands fa-instagram fa-2x"></i>
+        </a>
+      </div>
+    </div>
   </div>
 
 </main>
 
 <footer class="t-alignment">
   <p>© The Saffron House 2025 | All Rights Reserved</p>
-  
-    <div class="social-icons">
-    <p>Conect with us on our Social Media Page</p>
-    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <div class="social-icons">
+    <p>Connect with us on Social Media page</p>
+    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
   </div>
 </footer>
 
-<script src="js/main.js"></script>  
-  
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    autoplay: false 
+  });
+
+  // Share modal logic
+  const shareModal = document.getElementById("shareModal");
+  const shareBtn = document.getElementById("shareBtn");
+  const closeShare = document.querySelector(".close-modal");
+
+  shareBtn.onclick = function() {
+    shareModal.style.display = "block";
+  }
+
+  closeShare.onclick = function() {
+    shareModal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if(event.target == shareModal) {
+      shareModal.style.display = "none";
+    }
+  }
+});
+</script>
+
 </body>
 </html>

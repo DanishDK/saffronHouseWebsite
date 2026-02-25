@@ -327,5 +327,36 @@
 </footer>
 <script src="js/Main.js"></script>
 
+<script>
+$(document).ready(function() {
+  let cart = []; 
+
+  // Function to update cart count
+  function updateCartCount() {
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    $("#cartCount").text(totalItems);
+  }
+
+  // Function to add item to cart
+  $(".addToCart").click(function() {
+    const parent = $(this).closest(".menu-item");
+    const name = parent.data("name");
+    const price = parseFloat(parent.data("price").replace("$", ""));
+    const img = parent.data("img");
+
+    // Check if item already in cart
+    let existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ name, price, img, quantity: 1 });
+    }
+
+    updateCartCount();
+    console.log(cart); 
+  });
+});
+</script>
+
 </body>
 </html>
