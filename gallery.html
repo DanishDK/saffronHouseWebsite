@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/effects.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
 <style>
+  body { font-family: Arial, sans-serif; }
+
   .swiper {
     width: 90%;
     max-width: 1000px;
@@ -28,14 +28,41 @@
     border-radius: 8px;
   }
 
-  /* Share modal styling */
+  #filter-search {
+    padding: 10px;
+    width: 320px;
+    max-width: 90%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  #gallery {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  #gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
+
+  #gallery img:hover {
+    transform: scale(1.05);
+  }
+
   .modal {
     display: none;
     position: fixed;
     z-index: 1000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.5);
   }
 
@@ -60,20 +87,16 @@
   .share-icons a {
     margin: 10px;
     color: #333;
-    transition: color 0.2s;
-  }
-
-  .share-icons a:hover {
-    color: #007bff;
   }
 
   #shareBtn {
-    display: inline-block;
-    margin: 15px 0;
+    text-align: center;
+    margin: 20px;
     cursor: pointer;
   }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -92,67 +115,77 @@
 </nav>
 
 <main class="t-alignment">
-  <h2>The Saffron Gallery</h2>
 
-  <!-- Swiper Slider -->
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="images/sample1.jpg" alt="pic 1"></div>
-      <div class="swiper-slide"><img src="images/sample2.jpg" alt="pic 2"></div>
-      <div class="swiper-slide"><img src="images/sample3.jpg" alt="pic 3"></div>
-      <div class="swiper-slide"><img src="images/sample4.jpg" alt="pic 4"></div>
+<h2>The Saffron Gallery</h2>
+
+<!-- Swiper Slider -->
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="images/sample1.jpg" alt="restaurant interior"></div>
+    <div class="swiper-slide"><img src="images/sample2.jpg" alt="fine dining setup"></div>
+    <div class="swiper-slide"><img src="images/sample3.jpg" alt="luxury event decor"></div>
+    <div class="swiper-slide"><img src="images/sample4.jpg" alt="buffet table"></div>
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- Search Filter -->
+<div style="text-align:center;">
+  <input type="text" id="filter-search" placeholder="Search event (wedding, birthday, corporate, catering)">
+</div>
+
+<!-- Event Gallery -->
+<div id="gallery">
+  <img src="images/wedding1.jpg" alt="wedding event decoration">
+  <img src="images/wedding2.jpg" alt="wedding reception hall">
+
+  <img src="images/birthday1.jpg" alt="birthday party celebration">
+  <img src="images/birthday2.jpg" alt="kids birthday event">
+
+  <img src="images/corporate1.jpg" alt="corporate meeting event">
+  <img src="images/corporate2.jpg" alt="business conference event">
+
+  <img src="images/catering1.jpg" alt="outdoor catering service">
+  <img src="images/catering2.jpg" alt="restaurant catering buffet">
+</div>
+
+<!-- Share Button -->
+<div id="shareBtn">
+  <img src="images/shareIcon.jpg" width="90" height="90" alt="Share icon">
+  <p>Share</p>
+</div>
+
+<!-- Share Modal -->
+<div id="shareModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3>Share this Gallery</h3>
+    <input type="text" value="https://www.thesaffronhouse.com/gallery.html" readonly style="width:100%;">
+    <div class="share-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter fa-2x"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
     </div>
-
-    <!-- Navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div>
   </div>
-
-  <!-- Share Button -->
-  <div id="shareBtn">
-    <img src="images/shareIcon.jpg" width="90" height="90" alt="Share icon">
-    <p> Share</p>
-  </div>
-
-  <!-- Share Modal -->
-  <div id="shareModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h3>Share this Gallery</h3>
-      <p>Click an icon to share:</p>
-      <input type="text" value="https://www.thesaffronhouse.com/gallery.html" readonly style="width:100%; text-align:center;">
-
-      <div class="share-icons">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.thesaffronhouse.com/gallery.html" target="_blank">
-          <i class="fa-brands fa-facebook fa-2x"></i>
-        </a>
-        <a href="https://twitter.com/intent/tweet?url=https://www.thesaffronhouse.com/gallery.html&text=Check%20out%20The%20Saffron%20House%20Gallery!" target="_blank">
-          <i class="fa-brands fa-twitter fa-2x"></i>
-        </a>
-        <a href="https://www.instagram.com/" target="_blank">
-          <i class="fa-brands fa-instagram fa-2x"></i>
-        </a>
-      </div>
-    </div>
-  </div>
+</div>
 
 </main>
 
 <footer class="t-alignment">
   <p>© The Saffron House 2025 | All Rights Reserved</p>
-  <div class="social-icons">
-    <p>Connect with us on Social Media page</p>
-    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-  </div>
 </footer>
 
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const swiper = new Swiper('.swiper', {
+
+  new Swiper('.swiper', {
     loop: true,
     slidesPerView: 1,
     spaceBetween: 20,
@@ -163,29 +196,48 @@ document.addEventListener('DOMContentLoaded', function() {
     pagination: {
       el: '.swiper-pagination',
       clickable: true
-    },
-    autoplay: false 
+    }
   });
 
-  // Share modal logic
+  // Share Modal
   const shareModal = document.getElementById("shareModal");
   const shareBtn = document.getElementById("shareBtn");
   const closeShare = document.querySelector(".close-modal");
 
-  shareBtn.onclick = function() {
-    shareModal.style.display = "block";
-  }
+  shareBtn.onclick = () => shareModal.style.display = "block";
+  closeShare.onclick = () => shareModal.style.display = "none";
+  window.onclick = e => { if(e.target == shareModal) shareModal.style.display = "none"; };
 
-  closeShare.onclick = function() {
-    shareModal.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-    if(event.target == shareModal) {
-      shareModal.style.display = "none";
-    }
-  }
 });
+
+// Gallery Filter
+(function() {
+  var $imgs = $('#gallery img');
+  var $search = $('#filter-search');
+  var cache = [];
+
+  $imgs.each(function() {
+    cache.push({
+      element: this,
+      text: this.alt.trim().toLowerCase()
+    });
+  });
+
+  function filter() {
+    var query = this.value.trim().toLowerCase();
+    cache.forEach(function(img) {
+      var index = query ? img.text.indexOf(query) : 0;
+      img.element.style.display = index === -1 ? 'none' : '';
+    });
+  }
+
+  if ('oninput' in $search[0]) {
+    $search.on('input', filter);
+  } else {
+    $search.on('keyup', filter);
+  }
+
+})();
 </script>
 
 </body>
